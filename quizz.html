@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complex Numbers Quiz</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; background: #f4f4f9; }
+    h1 { color: #333; }
+    .question { margin-bottom: 20px; padding: 1em; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px #ccc; }
+    .question h3 { margin-top: 0; }
+    button { margin-top: 10px; padding: 0.5em 1em; }
+    .result { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Complex Numbers Quiz</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      <h3>1. What is the geometric interpretation of a complex number \( z = a + ib \)?</h3>
+      <label><input type="radio" name="q1" value="C"> C. A point (a, b) on the complex plane</label><br>
+      <label><input type="radio" name="q1" value="A"> A. A real number on the number line</label><br>
+      <label><input type="radio" name="q1" value="B"> B. A point on the imaginary axis only</label>
+    </div>
+
+    <div class="question">
+      <h3>2. How do you calculate the modulus of a complex number \( z = a + ib \)?</h3>
+      <label><input type="radio" name="q2" value="B"> B. \( \sqrt{a^2 + b^2} \)</label><br>
+      <label><input type="radio" name="q2" value="A"> A. \( a + b \)</label><br>
+      <label><input type="radio" name="q2" value="C"> C. \( a^2 + b^2 \)</label>
+    </div>
+
+    <div class="question">
+      <h3>3. What is the formula for converting \( z = a + ib \) to polar form?</h3>
+      <label><input type="radio" name="q3" value="B"> B. \( z = |z| (\cos(\theta) + i \sin(\theta)) \)</label><br>
+      <label><input type="radio" name="q3" value="A"> A. \( z = a \cos(\theta) + ib \sin(\theta) \)</label><br>
+      <label><input type="radio" name="q3" value="C"> C. \( z = \cos(\theta) + \sin(\theta) \)</label>
+    </div>
+
+    <div class="question">
+      <h3>4. According to Euler's formula, what is \( e^{i\theta} \)?</h3>
+      <label><input type="radio" name="q4" value="C"> C. \( \cos(\theta) + i \sin(\theta) \)</label><br>
+      <label><input type="radio" name="q4" value="A"> A. \( \cos(\theta) + \sin(\theta) \)</label><br>
+      <label><input type="radio" name="q4" value="B"> B. \( \cos(\theta) - i \sin(\theta) \)</label>
+    </div>
+
+    <div class="question">
+      <h3>5. In the expression \( z = |z| e^{i\theta} \), what does \( \theta \) represent?</h3>
+      <label><input type="radio" name="q5" value="B"> B. The angle with the positive real axis</label><br>
+      <label><input type="radio" name="q5" value="A"> A. The length of the complex number</label><br>
+      <label><input type="radio" name="q5" value="C"> C. The imaginary part of the number</label>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Submit</button>
+    <p class="result" id="result"></p>
+  </form>
+
+  <script>
+    const correctAnswers = { q1: "C", q2: "B", q3: "B", q4: "C", q5: "B" };
+
+    function checkAnswers() {
+      let score = 0;
+      let total = 5;
+      for (let key in correctAnswers) {
+        const answer = document.querySelector(`input[name="${key}"]:checked`);
+        if (answer && answer.value === correctAnswers[key]) score++;
+      }
+      document.getElementById("result").innerText = `You got ${score} out of ${total} correct.`;
+    }
+  </script>
+</body>
+</html>
